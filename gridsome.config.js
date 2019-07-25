@@ -5,6 +5,23 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = {
-  siteName: 'Gridsome',
-  plugins: []
+  siteName: 'Running Journal',
+  plugins: [
+    {
+      use: '@gridsome/source-filesystem',
+      options: {
+        path: 'journal/**/*.md',
+        route: '/journal/:slug',
+        typeName: 'Post',
+        remark: {
+
+        }
+      }
+    }
+  ],
+  transformers: {
+    remark: {
+      // global remark options
+    }
+  }
 }
