@@ -23,7 +23,19 @@ module.exports = {
 
         }
       }
-    }
+    },
+    // {
+    //   use: '~/source-csv-plugin',
+    //   options: {}
+    // }
+    // {
+    //   use: 'gridsome-source-google-sheets',
+    //   options: {
+    //     sheetId: '1RTnjZqn5TWF1dqzg3sDTuzJxlniQ5BR2H7zbQBH8hco',
+    //     apiKey: 'AIzaSyCXljhRIORaItEkpYSAQCWRjjjHGAPIpQk',
+    //     type: 'RunningMetric'
+    //   }
+    // }
   ],
   transformers: {
     remark: {

@@ -1,15 +1,15 @@
 <template>
-  <Layout>
+  <Layout :show-header="false">
     <div class="journal">
       <JournalEntry v-for="edges in $page.entries.edges" :key="edges.node.id" :entry="edges.node" />
     </div>
-    <Pager :info="$page.entries.pageInfo"/>
+    <Pager :info="$page.entries.pageInfo" class="pagination"/>
   </Layout>
 </template>
 
 <page-query>
 query Journal($page: Int) {
-  entries: allEntry(perPage: 2, page: $page) @paginate {
+  entries: allEntry(order: DESC, perPage: 2, page: $page) @paginate {
     pageInfo {
       totalPages
       currentPage
@@ -42,8 +42,27 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .home-links a {
   margin-right: 1rem;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+
+  & a {
+    color: #3D3D3D;
+    text-align: center;
+    text-decoration: none;
+
+    &:not(:last-child) {
+      margin-right: 1rem;
+    }
+
+    &:hover {
+      color: #aaaaaa;
+    }
+  }
 }
 </style>

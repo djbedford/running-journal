@@ -1,13 +1,7 @@
 <template>
     <header class="header">
         <div class="layout">
-            <strong>
-                <g-link to="/">{{ $static.metaData.siteName }}</g-link>
-            </strong>
-            <nav class="nav">
-                <g-link class="nav__link" to="/">Home</g-link>
-                <g-link class="nav__link" to="/about">About</g-link>
-            </nav>
+            <g-link to="/">&larr; {{ $static.metaData.siteName }}</g-link>
         </div>
     </header>
 </template>
@@ -20,7 +14,7 @@ query {
 }
 </static-query>
 
-<style scoped>
+<style lang="scss" scoped>
 .layout {
   max-width: 760px;
   margin: 0 auto;
@@ -29,12 +23,20 @@ query {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 80px;
+  height: 40px;
+
+  a {
+    margin-left: -10rem;
+    text-decoration: none;
+    color: #0477BF;
+  }
 }
 
 .header {
-  margin-bottom: 20px;
-  background: #0029FA;
+  position: sticky;
+  width: 100%;
+  top: 0;
+  margin-bottom: .4rem;
 }
 
 .nav__link {
