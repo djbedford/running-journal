@@ -21,9 +21,10 @@ export default {
     margin-bottom: 2rem;
     border-radius: 10px;
     color: #3D3D3D;
+    display: flex;
+    flex-direction: column;
 
     &-header {
-        height: 5rem;
         padding: .5rem;
         border-bottom: 2px solid #aaaaaa;
 

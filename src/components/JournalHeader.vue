@@ -29,14 +29,21 @@ query {
     margin-left: -10rem;
     text-decoration: none;
     color: #0477BF;
+
+    @media screen and (max-width: 1200px) {
+      margin-left: 0;
+    }
   }
 }
 
 .header {
-  position: sticky;
-  width: 100%;
   top: 0;
   margin-bottom: .4rem;
+
+  @media screen and (min-width: 1200px) {    
+    position: sticky;
+    width: 100%;
+  }
 }
 
 .nav__link {
