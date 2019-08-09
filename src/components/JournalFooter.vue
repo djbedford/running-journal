@@ -1,6 +1,6 @@
 <template>
     <footer class="layout footer">
-        <p>Copyright &copy; 2019. Powered by <a href="//gridsome.org">Gridsome</a></p>
+        <p>Copyright &copy; 2019. Powered by <a href="//gridsome.org" target="_blank" rel="nofollow noopener">Gridsome</a></p>
     </footer>
 </template>
 
