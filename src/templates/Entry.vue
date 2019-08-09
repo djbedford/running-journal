@@ -6,52 +6,7 @@
                 <p class="entry-header-metadata small">By {{ $page.entry.author }}</p>
             </div>
             <div class="entry-content">
-                <div class="entry-run-data">
-                    <div class="table">
-                        <div class="table-cell">
-                            <span class="label">Date:</span> <span class="data">{{ $page.entry.runDate }}</span>
-                        </div>
-                        <div class="table-cell">
-                            <span class="label">Start Time:</span> <span class="data">{{ $page.entry.startTime }}</span>
-                        </div>
-                        <div class="table-cell">
-                            <span class="label">Run Time:</span> <span class="data">{{ $page.entry.timeRan }}</span>
-                        </div>
-                        <div class="table-cell">
-                            <span class="label">Distance:</span> <span class="data">{{ $page.entry.distance }}</span>
-                        </div>
-                        <div class="table-cell">
-                            <span class="label">Avg. Pace:</span> <span class="data">{{ $page.entry.avgPace }}</span>
-                        </div>
-                        <div class="table-cell">
-                            <span class="label">Avg. Heart Rate:</span> <span class="data">{{ $page.entry.avgHeartRate }}</span>
-                        </div>
-                        <div class="table-cell">
-                            <span class="label">Temperature:</span> <span class="data">{{ $page.entry.temperature }}</span>
-                        </div>
-                        <div class="table-cell">
-                            <span class="label">Weather:</span> <span class="data">{{ $page.entry.weather }}</span>
-                        </div>
-                    </div>
-
-
-
-
-                    <!-- <table class="table">
-                        <tr>
-                            <td><span class="label">Date:</span> <span class="data">{{ $page.entry.runDate }}</span></td>
-                            <td><span class="label">Start Time:</span> <span class="data">{{ $page.entry.startTime }}</span></td>
-                            <td><span class="label">Run Time:</span> <span class="data">{{ $page.entry.timeRan }}</span></td>
-                            <td><span class="label">Distance:</span> <span class="data">{{ $page.entry.distance }}</span></td>
-                        </tr>
-                        <tr>
-                            <td><span class="label">Avg. Pace:</span> <span class="data">{{ $page.entry.avgPace }}</span></td>
-                            <td><span class="label">Avg. Heart Rate:</span> <span class="data">{{ $page.entry.avgHeartRate }}</span></td>
-                            <td><span class="label">Temperature:</span> <span class="data">{{ $page.entry.temperature }}</span></td>
-                            <td><span class="label">Weather:</span> <span class="data">{{ $page.entry.weather }}</span></td>
-                        </tr>
-                    </table> -->
-                </div>
+                <RunningMetrics :metrics="$page.entry.runningMetrics" />
                 <div v-html="$page.entry.content"></div>
             </div>
         </div>
@@ -63,25 +18,32 @@ query Entry ($path: String!) {
     entry: entry (path: $path) {
         title
         author
-        runDate
-        startTime
-        timeRan
-        distance
-        avgPace
-        avgHeartRate
-        temperature
-        weather
+        runningMetrics {
+            runDate
+            startTime
+            timeRan
+            distance
+            avgPace
+            avgHeartRate
+            temperature
+            weather
+        }
         content
     }
 }
 </page-query>
 
 <script>
+import RunningMetrics from '~/components/RunningMetrics'
+
 export default {
     metaInfo() {
         return {
             title: this.$page.entry.title
         }
+    },
+    components: {
+        RunningMetrics
     }
 }
 </script>
@@ -117,37 +79,5 @@ export default {
 
 .entry-content {
     color: #3D3D3D;
-
-    .entry-run-data {
-        .table {
-            width: 100%;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-
-            &-cell {
-                flex-grow: 1;
-                padding: .4rem;
-
-                .label {
-                    font-weight: 600;
-                }
-
-                .data {
-                    float: right;
-                }
-            }
-
-            @media screen and (max-width: 500px) {
-                .table {
-                    display: block;
-
-                    &-cell {
-                        width: 100%;
-                    }
-                }
-            }
-        }
-    }
 }
 </style>
