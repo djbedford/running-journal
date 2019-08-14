@@ -4,7 +4,10 @@
             <g-link :to="entry.path" class="entry-header-title">{{ entry.title }}</g-link>
             <p class="entry-header-metadata small">Entered on {{ entry.date }} by {{ entry.author }}</p>
         </div>
-        <div class="content" v-html="entry.content"></div>
+        <div>
+            <div class="content" v-html="entry.excerpt"></div>
+            <g-link :to="entry.path">Read more...</g-link>
+        </div>
     </div>
 </template>
 
@@ -28,15 +31,6 @@ export default {
         padding: .5rem;
         border-bottom: 2px solid #aaaaaa;
 
-        a {
-            color: #0477BF;
-            text-decoration: none;
-
-            &:hover {
-                color: #A3BFD9;
-            }
-        }
-
         p.small {
             font-size: .8rem;
         }
@@ -47,6 +41,15 @@ export default {
 
         &-metadata {
             color: #aaaaaa;
+        }
+    }
+
+    a {
+        color: #0477BF;
+        text-decoration: none;
+
+        &:hover {
+            color: #A3BFD9;
         }
     }
 }

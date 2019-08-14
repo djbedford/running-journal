@@ -20,6 +20,7 @@ query Journal($page: Int) {
         date
         author
         path
+        excerpt
         content
       }
     }
