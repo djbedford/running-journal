@@ -9,7 +9,7 @@
 
 <page-query>
 query Journal($page: Int) {
-  entries: allEntry(order: DESC, perPage: 2, page: $page) @paginate {
+  entries: allEntry(order: DESC, perPage: 10, page: $page) @paginate {
     pageInfo {
       totalPages
       currentPage
@@ -17,7 +17,7 @@ query Journal($page: Int) {
     edges {
       node {
         title
-        date
+        date (format: "DD.MM.YYYY")
         author
         path
         excerpt

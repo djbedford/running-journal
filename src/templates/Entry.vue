@@ -18,6 +18,7 @@ query Entry ($path: String!) {
     entry: entry (path: $path) {
         title
         author
+        date (format: "DD.MM.YYYY")
         runningMetrics {
             runDate
             startTime
